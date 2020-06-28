@@ -3,6 +3,7 @@ package io.cutebot.telegram
 import com.fasterxml.jackson.module.kotlin.jacksonObjectMapper
 import io.cutebot.telegram.exception.TgBotNotFoundException
 import io.cutebot.telegram.handlers.SetWebHookDto
+import io.cutebot.telegram.tgmodel.TgBotCommands
 import io.cutebot.telegram.tgmodel.TgChat
 import io.cutebot.telegram.tgmodel.TgChatAction
 import io.cutebot.telegram.tgmodel.TgFile
@@ -158,6 +159,10 @@ class TelegramService(
             }
             throw e
         }
+    }
+
+    fun setCommands(tgCommands: TgBotCommands) {
+        postMethod(tgCommands, "setMyCommands", String::class.java)
     }
 
     fun setWebHook() {

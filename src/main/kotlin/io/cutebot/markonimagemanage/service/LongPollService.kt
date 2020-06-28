@@ -21,6 +21,7 @@ class LongPollService(
 ) {
     @PostConstruct
     fun init() {
+        botHandleService.setCommands()
         startLongPoll(token)
     }
 
@@ -29,5 +30,4 @@ class LongPollService(
             LongPollProcess(longPollTimeout, botHandleService, token).start()
         }
     }
-
 }

@@ -1,5 +1,6 @@
 package io.cutebot.markonimagemanage.service
 
+import io.cutebot.markonimagemanage.service.messagehandlers.handler.AboutCommandHandler
 import io.cutebot.markonimagemanage.service.messagehandlers.handler.CommandHandler
 import io.cutebot.markonimagemanage.service.messagehandlers.handler.ManageBotCommandHandler
 import io.cutebot.markonimagemanage.service.messagehandlers.handler.NewBotCommandHandler
@@ -9,6 +10,8 @@ import io.cutebot.markonimagemanage.service.messagehandlers.process.BotProcess
 import io.cutebot.telegram.TelegramService
 import io.cutebot.telegram.handlers.TgBotLongPollHandler
 import io.cutebot.telegram.handlers.TgBotWebHookHandler
+import io.cutebot.telegram.tgmodel.TgBotCommand
+import io.cutebot.telegram.tgmodel.TgBotCommands
 import io.cutebot.telegram.tgmodel.TgResponseUpdate
 import io.cutebot.telegram.tgmodel.TgUpdate
 import org.slf4j.LoggerFactory
@@ -21,7 +24,8 @@ class BotHandleService(
         private val unknownMessageHandler: UnknownCommandHandler,
         startHandler: StartCommandHandler,
         newBotHandler: NewBotCommandHandler,
-        manageBotHandler: ManageBotCommandHandler
+        manageHandler: ManageBotCommandHandler,
+        aboutHandler: AboutCommandHandler
 
 ): TgBotWebHookHandler, TgBotLongPollHandler {
 
@@ -29,9 +33,11 @@ class BotHandleService(
 
     private val messagesMap: Map<String, CommandHandler> = mapOf(
             "/start" to startHandler,
+            "/mybots" to startHandler,
             "/cancel" to startHandler,
+            "/about" to aboutHandler,
             "/newbot" to newBotHandler,
-            "/manage" to manageBotHandler
+            "/manage" to manageHandler
     )
 
     override fun handle(token: String, update: TgUpdate) {
@@ -95,6 +101,15 @@ class BotHandleService(
 
     fun startWithWebHook(botToken: String) {
         telegramService.setWebHook()
+    }
+
+    fun setCommands() {
+        val commands = ArrayList<TgBotCommand>()
+        commands.add(TgBotCommand("mybots", "Show bots"))
+        commands.add(TgBotCommand("newbot", "Add new  bot"))
+        commands.add(TgBotCommand("about", "About info"))
+
+        telegramService.setCommands(TgBotCommands(commands))
     }
 
     companion object {
