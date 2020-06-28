@@ -14,17 +14,18 @@ class StartCommandHandler(
 ) : CommandHandler {
 
     override fun handle(params: String, chatId: Long, user: TgUser): BotProcess {
-        var message = "Welcome to mark-on-image-bot manager-bot.\n"
+        var message = "Welcome!\n"
 
         val bots = botClient.getBots(user.id)
 
         if (bots.isEmpty()) {
             message += "Currently you dont have any bots.\n"
         } else {
-            message += "\nYour bots.\n"
+            message += "\nYour bots:\n"
             var i = 1
             for (bot in bots) {
-                message += i.toString() + ". " + bot.title + " /manage_" + bot.botId + "\n"
+                message += i.toString() + ". <b>" + bot.title + "</b> " +
+                        "@" + bot.username + " /manage_" + bot.botId + "\n"
                 i++
             }
         }

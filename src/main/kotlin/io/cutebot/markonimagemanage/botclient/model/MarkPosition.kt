@@ -1,8 +1,9 @@
 package io.cutebot.markonimagemanage.botclient.model
 
-enum class MarkPosition {
-    LB,
-    RB,
-    LT,
-    RT;
+enum class MarkPosition(val desc: String) {
+    LB("↙️Left-bottom"),
+    RB("Right-bottom ↘️"),
+    LT("↖️Left-top"),
+    RT("Right-top ↗️");
+
 }

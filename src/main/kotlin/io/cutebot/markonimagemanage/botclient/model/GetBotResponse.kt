@@ -18,5 +18,9 @@ data class GetBotResponse(
         val title: String,
 
         @field: JsonProperty
-        val adminUsrId: Long
+        val adminUsrId: Long,
+
+        @field: JsonProperty
+        val username: String
+
 )

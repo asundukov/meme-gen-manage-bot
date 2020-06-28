@@ -80,6 +80,7 @@ class BotClient(
         reqEntity.addPart("botId", StringBody(markRequest.botId.toString(), TEXT_PLAIN))
         reqEntity.addPart("position", StringBody(markRequest.position.toString(), TEXT_PLAIN))
         reqEntity.addPart("sizeValue", StringBody(markRequest.sizeValue.toString(), TEXT_PLAIN))
+        reqEntity.addPart("opacity", StringBody(markRequest.opacity.toString(), TEXT_PLAIN))
 
         return postMultipartData(reqEntity, url)
     }
