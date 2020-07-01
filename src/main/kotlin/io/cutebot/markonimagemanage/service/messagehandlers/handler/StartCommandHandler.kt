@@ -16,6 +16,12 @@ class StartCommandHandler(
     override fun handle(params: String, chatId: Long, user: TgUser): BotProcess {
         var message = "Welcome!\n"
 
+        message += "I can help create your own bot like:\n" +
+                "@StoriesTellerBot - russian 2020 election no campaign\n" +
+                "@RickAndMortyPicBot - Rick&Morty fun bot\n" +
+                "@watermarkTestBot - place watermark example\n" +
+                "You can invite your team to make avatars or other labeled media for your campaigns\n\n"
+
         val bots = botClient.getBots(user.id)
 
         if (bots.isEmpty()) {
