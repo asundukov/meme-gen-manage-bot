@@ -1,14 +1,8 @@
 package io.cutebot.markonimagemanage.botclient
 
-import com.fasterxml.jackson.module.kotlin.jacksonObjectMapper
 import io.cutebot.markonimagemanage.botclient.model.*
-import io.cutebot.telegram.tgmodel.TgMessage
-import io.cutebot.telegram.tgmodel.TgSendDocument
-import io.cutebot.telegram.tgmodel.TgSendPhoto
-import io.cutebot.telegram.tgmodel.response.TgResponseMessage
 import org.apache.http.client.HttpClient
 import org.apache.http.client.methods.HttpPost
-import org.apache.http.entity.ContentType
 import org.apache.http.entity.ContentType.TEXT_PLAIN
 import org.apache.http.entity.mime.MultipartEntity
 import org.apache.http.entity.mime.content.FileBody
