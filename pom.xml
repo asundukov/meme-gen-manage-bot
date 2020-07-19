@@ -50,10 +50,15 @@
             <artifactId>postgresql</artifactId>
             <scope>runtime</scope>
         </dependency>
+        <!--        <dependency>-->
+        <!--            <groupId>io.cutebot</groupId>-->
+        <!--            <artifactId>kotlin-telegram-bot</artifactId>-->
+        <!--            <version>1.0.0-RELEASE</version>-->
+        <!--        </dependency>-->
         <dependency>
-            <groupId>io.cutebot</groupId>
+            <groupId>com.github.asundukov</groupId>
             <artifactId>kotlin-telegram-bot</artifactId>
-            <version>1.0.0-RELEASE</version>
+            <version>1.0.0-2</version>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -153,5 +158,11 @@
             </plugin>
         </plugins>
     </build>
+    <repositories>
+        <repository>
+            <id>jitpack.io</id>
+            <url>https://jitpack.io</url>
+        </repository>
+    </repositories>
 
 </project>
